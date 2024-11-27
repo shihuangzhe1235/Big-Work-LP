@@ -7,13 +7,11 @@ class MathQuizApp:
     def __init__(self, master):
         self.master = master
         self.master.title("数学问答游戏")
-
         self.difficulty = tk.StringVar(value="简单")  # 默认难度
         self.score = 0
         self.current_streak = 0  # 连击计数
         self.time_limit = 10  # 每道题目时间限制（秒）
         self.timer_id = None  # 计时器标识
-
         # 难度选择
         self.difficulty_label = tk.Label(master, text="选择难度:", font=("Arial", 16))
         self.difficulty_label.pack(pady=10)

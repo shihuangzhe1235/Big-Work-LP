@@ -4,7 +4,9 @@ import math
 # from advanced_calculator import factorial, solve_equation, derivative
 # from visualization import plot_bar_chart, plot_pie_chart, plot_regression_curve
 # from history import log_history, show_history
-
+from Games.mathquiz import MathQuizApp
+from Games.gamewuzi import GomokuGame
+from Games.game2048 import Game2048
 root = tk.Tk()
 root.title('计算器')
 # 界面大小
@@ -14,7 +16,6 @@ root.attributes("-alpha", 0.9)
 #root["background"] = "#ffffff"
 font = ('Arial', 20)
 font_16 = ('Arial', 16)
-
 result_num = tk.StringVar()
 #result_num.set('0')
 
@@ -93,13 +94,18 @@ button_equation = tk.Button(root, text='求方程', width=5, font=font_16, relie
 button_equation.grid(row=8, column=1, padx=4, pady=2)
 button_bar.grid(row=8, column=2, padx=4, pady=2)
 button_pie.grid(row=8, column=3, padx=4, pady=2)
-
-
+# 创建跳转到问答游戏的按钮
+button_quiz = tk.Button(root, text='问答游戏', width=10, font=('Arial', 16), relief=tk.FLAT, bg='#b1b2b2')
+button_quiz.grid(row=9, column=1, padx=4, pady=2, columnspan=2)
+button_gomoku = tk.Button(root, text='五子棋游戏', width=10, font=('Arial', 16), relief=tk.FLAT, bg='#b1b2b2')
+button_gomoku.grid(row=9, column=3, padx=4, pady=2, columnspan=2)
+# 创建跳转到2048游戏的按钮
+button_2048 = tk.Button(root, text='进入2048游戏', width=10, font=('Arial', 16), relief=tk.FLAT, bg='#b1b2b2')
+button_2048.grid(row=9, column=5, padx=4, pady=2, columnspan=2)
 #############点击事件##############
 def click_button(x):
     print('x:\t', x)
     result_num.set(result_num.get() + x)
-
 #计算表达式
 def calculation():
     opt_str = result_num.get()
@@ -158,6 +164,19 @@ button_e.config(command=lambda:click_button('e'))
 button_equal.config(command=calculation)
 button_clear.config(command=clear)
 button_back.config(command=back)
-
-
+"""为数字游戏绑定一个页面跳转"""
+def open_math_quiz():
+    quiz_window = tk.Toplevel(root)
+    app = MathQuizApp(quiz_window)
+button_quiz.config(command=open_math_quiz)
+"""为五子棋绑定一个页面跳转"""
+def open_gomoku_game():
+    gomoku_window = tk.Toplevel(root)
+    game = GomokuGame(gomoku_window)
+button_gomoku.config(command=open_gomoku_game)
+"""为2048绑定一个页面跳转"""
+def open_2048_game():
+    game_2048_window = tk.Toplevel(root)
+    game = Game2048(game_2048_window)
+button_2048.config(command=open_2048_game)
 root.mainloop()
