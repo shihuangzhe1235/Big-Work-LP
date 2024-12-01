@@ -15,7 +15,6 @@ class MathQuizApp:
         # 难度选择
         self.difficulty_label = tk.Label(master, text="选择难度:", font=("Arial", 16))
         self.difficulty_label.pack(pady=10)
-
         self.easy_button = tk.Radiobutton(
             master, text="简单", variable=self.difficulty, value="简单", font=("Arial", 14)
         )
