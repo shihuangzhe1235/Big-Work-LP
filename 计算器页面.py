@@ -12,6 +12,7 @@ from Games.game2048 import Game2048
 from bar_chart import plot_bar_chart
 from pie_chart import create_pie_chart_window
 from regression_curve_generator import create_regression_curve_window
+from Solve_equations import EquationSolverApp
 root = tk.Tk()
 root.title('计算器')
 # 界面大小
@@ -120,6 +121,10 @@ button_gomoku.grid(row=9, column=5, padx=4, pady=2)
 
 
 #############点击事件##############
+"""为求方程绑定一个求方程页面跳转"""
+def open_solve_equations():
+    eq=tk.Toplevel(root)
+    app = EquationSolverApp(eq)
 def click_button(x):
     print('x:\t',x)
     result_num.set(result_num.get() + x)
@@ -231,6 +236,5 @@ button_equal.config(command=calculation)
 button_clear.config(command=clear)
 button_back.config(command=back)
 button_diff.config(command=derivative)
-
-
+button_equation.config(command=open_solve_equations)
 root.mainloop()
