@@ -6,9 +6,6 @@ from matplotlib import rcParams
 # 设置字体，确保支持中文
 rcParams['font.sans-serif'] = ['SimHei']  # 使用黑体
 rcParams['axes.unicode_minus'] = False  # 解决负号显示问题
-
-
-
 def plot_bar_chart():
     # 创建主窗口
     root = tk.Toplevel()

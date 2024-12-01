@@ -133,13 +133,21 @@ def calculation():
     opt_str = result_num.get()
     if "!" in opt_str:
         opt_str = factorial_replace(opt_str)
+
     opt_str = opt_str.replace('e', str(math.e))
     opt_str = opt_str.replace('^', '**')
-    opt_str = opt_str.replace('log', 'math.log')
     opt_str = opt_str.replace('√', 'math.sqrt')
     opt_str = opt_str.replace('π', str(math.pi))
-    result = eval(opt_str)
-    result_num.set(str(result))
+    # 匹配对数表达式并替换
+    pattern = r"log\(([^,]+),\s*([^)]+)\)"
+    opt_str = re.sub(pattern, lambda m: f"math.log({m.group(2)})/math.log({m.group(1)})", opt_str)
+    # 计算最终结果
+    try:
+        result = eval(opt_str)
+        result_num.set(str(result))
+    except Exception as e:
+        result_num.set("表达式错误！")
+        print(f"Error evaluating expression: {e}")
 
 #清屏操作
 def clear():
