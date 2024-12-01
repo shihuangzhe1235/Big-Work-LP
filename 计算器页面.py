@@ -3,12 +3,15 @@ from sympy import *
 import subprocess
 import re
 import math
-
+import matplotlib.pyplot as plt
+import numpy as np
 
 from Games.mathquiz import MathQuizApp
 from Games.gamewuzi import GomokuGame
 from Games.game2048 import Game2048
-
+from bar_chart import plot_bar_chart
+from pie_chart import create_pie_chart_window
+from regression_curve_generator import create_regression_curve_window
 root = tk.Tk()
 root.title('计算器')
 # 界面大小
@@ -120,7 +123,6 @@ button_gomoku.grid(row=9, column=5, padx=4, pady=2)
 def click_button(x):
     print('x:\t',x)
     result_num.set(result_num.get() + x)
-
 #计算表达式
 def calculation():
     opt_str = result_num.get()
@@ -187,7 +189,13 @@ def factorial_replace(opt_str):
         opt_str = opt_str.replace(i + "!", str(re_result))
     return opt_str
 
-
+def open_bar_chart_page():
+    # 这里可以进行一些数据准备等操作，假设绘图函数需要的数据已在对应文件中定义好或者后续可以补充传入合适的数据
+    plot_bar_chart()
+def open_pie_chart_page():
+    create_pie_chart_window()
+def open_regression_curve_page():
+    create_regression_curve_window()
 #######点击按钮显示在屏幕上#########
 button_one.config(command=lambda:click_button('1'))
 button_two.config(command=lambda:click_button('2'))
@@ -215,9 +223,9 @@ button_rb.config(command=lambda:click_button(')'))
 button_pi.config(command=lambda:click_button('π'))
 button_e.config(command=lambda:click_button('e'))
 button_uknum.config(command=lambda:click_button('x'))
-
-
-
+button_bar.config(command=open_bar_chart_page)
+button_pie.config(command=open_pie_chart_page)
+button_huigui.config(command=open_regression_curve_page)
 ##########给按钮绑定功能###########
 button_equal.config(command=calculation)
 button_clear.config(command=clear)
