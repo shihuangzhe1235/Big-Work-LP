@@ -19,7 +19,6 @@ def plot_bar_chart():
     tk.Label(root, text="输入数值（用逗号分隔）:").pack(pady=5)
     entry_values = tk.Entry(root, width=40)
     entry_values.pack(pady=5)
-
     # 独立绘制柱状图的逻辑
     def generate_bar_chart():
         try:

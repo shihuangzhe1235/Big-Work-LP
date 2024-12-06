@@ -19,14 +19,14 @@ import os
 # 获取当前工作目录  
 base_path = os.getcwd()
 # 使用 os.path.join 和正斜杠来定义路径  
-BGMPATH = os.path.join(base_path,  'resources', 'sounds', 'bg.mp3')
-ICONPATH = os.path.join(base_path,  'resources', 'images', 'icon.png')
-FONTPATH = os.path.join(base_path, 'resources', 'font', 'ALGER.TTF')
-HEROPATH = os.path.join(base_path, 'resources', 'images', 'pacman.png')
-BlinkyPATH = os.path.join(base_path, 'resources', 'images', 'Blinky.png')
-ClydePATH = os.path.join(base_path, 'resources', 'images', 'Clyde.png')
-InkyPATH = os.path.join(base_path, 'resources', 'images', 'Inky.png')
-PinkyPATH = os.path.join(base_path, 'resources', 'images', 'Pinky.png')
+BGMPATH = os.path.join(base_path,  'Games','Pac-Man','resources', 'sounds', 'bg.mp3')
+ICONPATH = os.path.join(base_path, 'Games','Pac-Man', 'resources', 'images', 'icon.png')
+FONTPATH = os.path.join(base_path, 'Games','Pac-Man','resources', 'font', 'ALGER.TTF')
+HEROPATH = os.path.join(base_path, 'Games','Pac-Man','resources', 'images', 'pacman.png')
+BlinkyPATH = os.path.join(base_path,'Games','Pac-Man', 'resources', 'images', 'Blinky.png')
+ClydePATH = os.path.join(base_path, 'Games','Pac-Man','resources', 'images', 'Clyde.png')
+InkyPATH = os.path.join(base_path,'Games','Pac-Man', 'resources', 'images', 'Inky.png')
+PinkyPATH = os.path.join(base_path, 'Games','Pac-Man','resources', 'images', 'Pinky.png')
 '''开始某一关游戏'''
 def startLevelGame(level, screen, font):
 	clock = pygame.time.Clock()

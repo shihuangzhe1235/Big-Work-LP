@@ -52,18 +52,18 @@ button_clear.grid(row=3, column=2, padx=4, pady=2)
 button_back.grid(row=3, column=3, padx=4, pady=2)
 button_division.grid(row=3, column=4, padx=4, pady=2)
 button_mult.grid(row=3, column=5, padx=4, pady=2)
-
 button_factorial = tk.Button(root, text='!', width=5, font=font_16, relief=tk.FLAT, bg='#b1b2b2')
 button_seven = tk.Button(root, text='7', width=5, font=font_16, relief=tk.FLAT, bg='#eacda1')
 button_eight = tk.Button(root, text='8', width=5, font=font_16, relief=tk.FLAT, bg='#eacda1')
 button_nine = tk.Button(root, text='9', width=5, font=font_16, relief=tk.FLAT, bg='#eacda1')
 button_sub = tk.Button(root, text='-', width=5, font=font_16, relief=tk.FLAT, bg='#b1b2b2')
+button_game14 = tk.Button(root, text='启动Game14', width=12, font=('Arial', 16), relief=tk.FLAT, bg='#b1b2b2')
 button_factorial.grid(row=4, column=1, padx=4, pady=2)
 button_seven.grid(row=4, column=2, padx=4, pady=2)
 button_eight.grid(row=4, column=3, padx=4, pady=2)
 button_nine.grid(row=4, column=4, padx=4, pady=2)
 button_sub.grid(row=4, column=5, padx=4, pady=2)
-
+button_game14.grid(row=10, column=1, padx=4, pady=2, columnspan=2)
 button_diff = tk.Button(root, text='求导', width=5, font=font_16, relief=tk.FLAT, bg='#b1b2b2')
 button_four = tk.Button(root, text='4', width=5, font=font_16, relief=tk.FLAT, bg='#eacda1')
 button_five = tk.Button(root, text='5', width=5, font=font_16, relief=tk.FLAT, bg='#eacda1')
@@ -122,6 +122,13 @@ button_gomoku.grid(row=9, column=5, padx=4, pady=2)
 
 #############点击事件##############
 """为求方程绑定一个求方程页面跳转"""
+def open_game14():
+    try:
+        file_path = r"Games/Pac-Man/Game14.py"
+        subprocess.run(["python", file_path], check=True)
+        root.destroy()  # 启动后关闭当前窗口
+    except Exception as e:
+        print(f"启动 Game14.py 时出现错误: {e}")
 def open_solve_equations():
     eq=tk.Toplevel(root)
     app = EquationSolverApp(eq)
@@ -245,4 +252,5 @@ button_clear.config(command=clear)
 button_back.config(command=back)
 button_diff.config(command=derivative)
 button_equation.config(command=open_solve_equations)
+button_game14.config(command=open_game14)
 root.mainloop()
